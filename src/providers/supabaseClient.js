@@ -10,5 +10,12 @@ const anon =
   process.env.REACT_APP_SUPABASE_ANON_KEY ||
   '';
 
+// Debug logging
+if (!url || !anon) {
+  console.warn('⚠️ Supabase credentials missing:', { url: !!url, anon: !!anon });
+} else {
+  console.log('✅ Supabase client initialized with URL:', url);
+}
+
 export const supabase = createClient(url, anon);
 export default supabase;

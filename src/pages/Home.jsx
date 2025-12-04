@@ -8,7 +8,7 @@ import PageLayout from '../components/layout/PageLayout';
 
 const Home = () => {
   // const { windowSize, baseUnit } = useWindowResize();
-  const { data: homeData } = useHomeDataSupabase();
+  const { data: homeData, loading } = useHomeDataSupabase();
 
   return (
     <>
@@ -38,7 +38,7 @@ const Home = () => {
           }}
         >
           <div className="mb-[70px] md:mb-[170px]">
-            {homeData?.Content ? (
+            {loading ? null : homeData?.Content ? (
               <div className="prose max-w-xl dark:prose-invert">
                 <BlocksRenderer content={homeData.Content} />
               </div>
@@ -51,13 +51,18 @@ const Home = () => {
 
           <nav className="mb-16">
             <div className="flex flex-col space-y-2">
-              {homeData?.Menu?.map((menuItem) => (
+              {homeData?.Menu?.filter((menuItem) => {
+                const link = String(menuItem.Link || '').toLowerCase();
+                const name = String(menuItem.Name || '').toLowerCase();
+                return link !== 'awards' && !name.includes('award');
+              }).map((menuItem) => (
                 <div
                   key={menuItem.id}
                   className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white"
                 >
+                  <span className="mr-2">→</span>
                   <Link to={`/${menuItem.Link}`} className="hover:text-[#6366f1]">
-                    {menuItem.Name}
+                    {menuItem.Name?.replace(/[\[\]]/g, '').trim()}
                   </Link>
                 </div>
               ))}

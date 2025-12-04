@@ -25,7 +25,11 @@ const Info = () => {
       </div>
       
       <div className="flex flex-col space-y-2 mt-16">
-        {settingsData?.Menu?.map((menuItem) => (
+        {settingsData?.Menu?.filter((menuItem) => {
+          const link = String(menuItem.Link || '').toLowerCase();
+          const name = String(menuItem.Name || '').toLowerCase();
+          return link !== 'awards' && !name.includes('award');
+        }).map((menuItem) => (
           <div key={menuItem.id} className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white">
             <Link
               to={menuItem.Link.startsWith('http') ? menuItem.Link : `/${menuItem.Link}`} 
@@ -37,13 +41,6 @@ const Info = () => {
             </Link>
           </div>
         ))}
-        <div className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white">
-          
-          <Link to="/awards" className="hover:text-[#6366f1]">
-            <span className="mr-2">→</span>
-            Awards
-          </Link>
-        </div>
         <div className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white">
           
           <Link to="/" className="hover:text-[#6366f1]">

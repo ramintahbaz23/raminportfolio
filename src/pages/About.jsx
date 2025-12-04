@@ -23,6 +23,12 @@ const About = () => {
       Target: '_blank',
     },
     {
+      id: 'external-git',
+      Link: 'https://github.com/ramintahbaz23',
+      Name: 'Git',
+      Target: '_blank',
+    },
+    {
       id: 'external-linkedin',
       Link: 'https://www.linkedin.com/in/ramin-tahbaz/',
       Name: 'LinkedIn',
@@ -31,7 +37,7 @@ const About = () => {
     {
       id: 'external-imdb',
       Link: 'https://www.imdb.com/name/nm11702949/',
-      Name: 'iMDb',
+      Name: 'IMDb',
       Target: '_blank',
     },
   ];
@@ -66,28 +72,30 @@ const About = () => {
         </div>
 
         <div className="flex flex-col space-y-2 mt-16">
-          {mergedMenu.map((menuItem) => (
+          {mergedMenu.filter((menuItem) => {
+            const link = String(menuItem.Link || '').toLowerCase();
+            const name = String(menuItem.Name || '').toLowerCase();
+            return link !== 'awards' && !name.includes('award');
+          }).map((menuItem) => (
             <div
               key={menuItem.id}
               className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white"
             >
+              <span className="mr-2">→</span>
               {/* Keep same rendering pattern as before — external links use full URL */}
               <Link
                 to={menuItem.Link.startsWith('http') ? menuItem.Link : `/${menuItem.Link}`}
                 target={menuItem.Target}
                 className="hover:text-[#6366f1] flex items-center"
               >
-                [ {menuItem.Link.startsWith('http') ? `${menuItem.Name} *` : menuItem.Name} ]
+                {menuItem.Link.startsWith('http') ? `${menuItem.Name?.replace(/[\[\]]/g, '').trim()}*` : menuItem.Name?.replace(/[\[\]]/g, '').trim()}
               </Link>
             </div>
           ))}
 
           <div className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white">
-            <Link to="/awards" className="hover:text-[#6366f1]">[ Awards ]</Link>
-          </div>
-
-          <div className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white">
-            <Link to="/" className="hover:text-[#6366f1]">[ Back ]</Link>
+            <span className="mr-2">←</span>
+            <Link to="/" className="hover:text-[#6366f1]">Back</Link>
           </div>
         </div>
       </PageLayout>

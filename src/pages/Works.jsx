@@ -35,7 +35,7 @@ const Works = () => {
                     to={`/works/${work.slug}`}
                     className="hover:text-[#6366f1] flex items-center text-black dark:text-white"
                   >
-                    [ {work.title} ]
+                    {work.title}
                   </Link>
                 </div>
               ))}
@@ -46,7 +46,8 @@ const Works = () => {
             </div>
 
             <div className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white mt-16">
-              <Link to="/" className="hover:text-[#6366f1]">[ Back ]</Link>
+              <span className="mr-2">←</span>
+              <Link to="/" className="hover:text-[#6366f1]">Back</Link>
             </div>
           </>
         )}
