@@ -56,6 +56,30 @@ const About = () => {
         <title>{'About'}</title>
         <meta property="og:title" content={'About'} />
         <meta property="og:type" content="website" />
+        <style>{`
+          @media (max-width: 767px) {
+            .about-nav-links > div {
+              margin-bottom: 0 !important;
+              padding-top: 0 !important;
+              padding-bottom: 0 !important;
+              line-height: 1.2 !important;
+              height: auto !important;
+              min-height: 0 !important;
+            }
+            .about-nav-links > div:not(:first-child) {
+              margin-top: 0.5rem !important;
+            }
+            .about-nav-links > div {
+              display: flex !important;
+              align-items: center !important;
+            }
+          }
+          @media (min-width: 768px) {
+            .about-nav-links > div:not(:first-child) {
+              margin-top: 1rem !important;
+            }
+          }
+        `}</style>
       </Helmet>
 
       <PageLayout>
@@ -65,13 +89,13 @@ const About = () => {
               key={item.id}
               year={item.year}
               title={item.title}
-              companyLocation={item.company_location}
+              companyLocation={item.company_location?.replace(/Oakland/gi, 'San Francisco') || item.company_location}
               className="dark:text-white"
             />
           ))}
         </div>
 
-        <div className="flex flex-col space-y-2 mt-16">
+        <div className="flex flex-col about-nav-links mt-16">
           {mergedMenu.filter((menuItem) => {
             const link = String(menuItem.Link || '').toLowerCase();
             const name = String(menuItem.Name || '').toLowerCase();
@@ -91,14 +115,14 @@ const About = () => {
                     href={menuItem.Link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rainbow-hover flex items-center"
+                    className="flex items-center"
                   >
                     {linkContent}
                   </a>
                 ) : (
                   <Link
                     to={`/${menuItem.Link}`}
-                    className="rainbow-hover flex items-center"
+                    className="flex items-center"
                   >
                     {linkContent}
                   </Link>
@@ -111,7 +135,7 @@ const About = () => {
 
           <div className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white">
             <span className="mr-2">←</span>
-            <Link to="/" className="rainbow-hover">Back</Link>
+            <Link to="/">Back</Link>
           </div>
         </div>
       </PageLayout>

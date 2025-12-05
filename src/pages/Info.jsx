@@ -24,7 +24,7 @@ const Info = () => {
         ))}
       </div>
       
-      <div className="flex flex-col space-y-2 mt-16">
+      <div className="flex flex-col space-y-2 md:space-y-4 mt-16">
         {settingsData?.Menu?.filter((menuItem) => {
           const link = String(menuItem.Link || '').toLowerCase();
           const name = String(menuItem.Name || '').toLowerCase();
@@ -34,7 +34,7 @@ const Info = () => {
             <Link
               to={menuItem.Link.startsWith('http') ? menuItem.Link : `/${menuItem.Link}`} 
               target={menuItem.Target}
-              className="rainbow-hover flex items-center"
+              className="flex items-center"
             >
               <span className={`mr-2 transform ${menuItem.Link.startsWith('http') ? '-rotate-45' : ''}`}>→</span>
               {menuItem.Name}
@@ -43,7 +43,7 @@ const Info = () => {
         ))}
         <div className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white">
           
-          <Link to="/" className="rainbow-hover">
+          <Link to="/">
             <span className="mr-2">←</span>
             Back
           </Link>

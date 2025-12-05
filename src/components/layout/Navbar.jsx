@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext';
-import sunIcon from '../../assets/images/sun.svg';
-import moonIcon from '../../assets/images/moon.svg';
 
 const Navbar = () => {
-  const { isDarkMode, toggleDarkMode } = useTheme();
   const location = useLocation();
   const isWorkPage = location.pathname.startsWith('/works/') && location.pathname !== '/works';
   const [backButtonColor, setBackButtonColor] = useState('black');
@@ -76,29 +72,9 @@ const Navbar = () => {
       <nav>
         <div className="flex justify-between items-center">
           {!isWorkPage && (
-            <Link to="/" className={`rainbow-hover text-[16px] md:text-[16pt] dark:text-white text-black`}>
+            <Link to="/" className={`text-[16px] md:text-[16pt] dark:text-white text-black`}>
               Ramin Tahbaz
             </Link>
-          )}
-          {!isWorkPage && (
-            <button
-              onClick={toggleDarkMode}
-              className={`theme-toggle-button p-[5px] rounded-full bg-gray-200 dark:bg-gray-700 relative right-[15px] overflow-hidden ${
-                isDarkMode ? 'theme-toggle-dark' : 'theme-toggle-light'
-              }`}
-              aria-label="Toggle theme"
-            >
-              <img 
-                src={isDarkMode ? moonIcon : sunIcon} 
-                alt={isDarkMode ? "Dark mode" : "Light mode"}
-                className="theme-toggle-icon-default w-[9px] h-[9px] relative z-10"
-              />
-              <img 
-                src={isDarkMode ? sunIcon : moonIcon} 
-                alt={isDarkMode ? "Light mode" : "Dark mode"}
-                className="theme-toggle-icon-hover w-[9px] h-[9px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 opacity-0"
-              />
-            </button>
           )}
         </div>
       </nav>
@@ -108,7 +84,7 @@ const Navbar = () => {
             <div className="w-full max-w-[1400px] px-6 sm:px-8 lg:px-12">
               <Link 
                 to="/" 
-                className="rainbow-hover text-[16px] md:text-[16pt] dark:text-white text-black relative z-40 inline-block"
+                className="text-[16px] md:text-[16pt] dark:text-white text-black relative z-40 inline-block"
                 style={{ pointerEvents: 'auto', position: 'relative' }}
               >
                 Ramin Tahbaz
@@ -120,7 +96,7 @@ const Navbar = () => {
               <Link 
                 ref={backButtonRef}
                 to="/works" 
-                className={`rainbow-hover text-[16px] md:text-[16pt] flex items-center mr-6 md:mr-[55px] px-3 py-1.5 rounded backdrop-blur-sm bg-white/80 dark:bg-[#1c1f26]/80 transition-colors duration-200 pointer-events-auto ${
+                className={`text-[16px] md:text-[16pt] flex items-center mr-6 md:mr-[55px] px-3 py-1.5 rounded backdrop-blur-sm bg-white/80 dark:bg-[#1c1f26]/80 transition-colors duration-200 pointer-events-auto ${
                   backButtonColor === 'white' ? 'text-white' : 'text-black dark:text-white'
                 }`}
               >

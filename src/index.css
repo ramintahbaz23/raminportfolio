@@ -83,49 +83,8 @@ body:not(.rhythm-page) {
     }
 }
 
-/* Classic Web 1.0 Link Hover Effects */
-.rainbow-hover {
-  position: relative;
-  text-decoration: none;
-  cursor: pointer;
-  display: inline-block;
-  transition: transform 0.1s steps(1, end);
-}
-
-.rainbow-hover::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: currentColor;
-  transition: width 0.2s ease-out;
-}
-
-.rainbow-hover:hover {
-  transform: translateY(-1px);
-}
-
-.rainbow-hover:hover::after {
-  width: 100%;
-}
-
-/* Mobile/touch device styles for links */
-@media (hover: none) and (pointer: coarse) {
-  .rainbow-hover:active,
-  .rainbow-hover:focus {
-    transform: translateY(-1px);
-  }
-
-  .rainbow-hover:active::after,
-  .rainbow-hover:focus::after {
-    width: 100%;
-  }
-}
-
 /* Mac OS hand cursor for links */
-a, .rainbow-hover, button, [role="button"] {
+a, button, [role="button"] {
   cursor: pointer;
 }
 
@@ -147,7 +106,7 @@ button:active, .drum-button:active, [role="button"]:active {
 }
 
 /* Pixel snap for links */
-a, .rainbow-hover {
+a {
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
@@ -173,6 +132,12 @@ a, .rainbow-hover {
   transition: all 0.1s steps(1, end);
   position: relative;
   overflow: hidden;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
 }
 
 .theme-toggle-button:hover {
@@ -183,15 +148,36 @@ a, .rainbow-hover {
   transform: translate(1px, 1px);
 }
 
-/* Only apply focus styles on mobile/touch devices */
+/* Only apply focus styles on mobile/touch devices - simplified press effect */
 @media (hover: none) and (pointer: coarse) {
-  .theme-toggle-button:focus,
   .theme-toggle-button:active {
     border-style: inset;
     box-shadow: 
       inset 1px 1px 0px #000,
       inset -1px -1px 0px #fff;
     transform: translate(1px, 1px);
+  }
+  
+  /* Remove focus styles on mobile - only use active for press effect */
+  .theme-toggle-button:focus {
+    outline: none;
+    border-style: outset;
+    box-shadow: 
+      inset -1px -1px 0px #000,
+      inset 1px 1px 0px #fff,
+      2px 2px 0px #000;
+    transform: translate(0, 0);
+  }
+  
+  /* Prevent icon switching on mobile taps */
+  .theme-toggle-button:focus .theme-toggle-icon-default,
+  .theme-toggle-button:active .theme-toggle-icon-default {
+    opacity: 1 !important;
+  }
+  
+  .theme-toggle-button:focus .theme-toggle-icon-hover,
+  .theme-toggle-button:active .theme-toggle-icon-hover {
+    opacity: 0 !important;
   }
 }
 
@@ -237,38 +223,22 @@ a, .rainbow-hover {
   border-radius: 50%;
 }
 
-/* Mobile/touch device styles */
+/* Mobile/touch device styles - simplified, no icon switching */
 @media (hover: none) and (pointer: coarse) {
   .theme-toggle-light:focus,
   .theme-toggle-light:active {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background: #c0c0c0;
+  }
+
+  /* Keep default icon visible on mobile, don't show hover icon */
+  .theme-toggle-light:focus .theme-toggle-icon-default,
+  .theme-toggle-light:active .theme-toggle-icon-default {
+    opacity: 1;
   }
 
   .theme-toggle-light:focus .theme-toggle-icon-hover,
   .theme-toggle-light:active .theme-toggle-icon-hover {
-    filter: brightness(0) invert(1);
-  }
-
-  .theme-toggle-light:focus::before,
-  .theme-toggle-light:active::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      radial-gradient(2px 2px at 20% 30%, white, transparent),
-      radial-gradient(2px 2px at 60% 70%, white, transparent),
-      radial-gradient(1px 1px at 50% 50%, white, transparent),
-      radial-gradient(1px 1px at 80% 10%, white, transparent),
-      radial-gradient(2px 2px at 90% 40%, white, transparent),
-      radial-gradient(1px 1px at 33% 60%, white, transparent),
-      radial-gradient(1px 1px at 10% 80%, white, transparent);
-    background-size: 200% 200%;
-    animation: twinkle 3s ease-in-out infinite;
-    pointer-events: none;
-    border-radius: 50%;
+    opacity: 0;
   }
 }
 
@@ -298,30 +268,22 @@ a, .rainbow-hover {
   transition: opacity 0.1s steps(1, end);
 }
 
-/* Mobile/touch device styles */
+/* Mobile/touch device styles - simplified, no icon switching */
 @media (hover: none) and (pointer: coarse) {
   .theme-toggle-dark:focus,
   .theme-toggle-dark:active {
-    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ffd23f 50%, #f7931e 75%, #ff6b35 100%);
-    background-size: 200% 200%;
-    animation: rainbow 2s ease infinite;
-    box-shadow: 
-      inset 1px 1px 0px #000,
-      inset -1px -1px 0px #fff,
-      0 0 20px rgba(255, 107, 53, 0.6), 
-      0 0 40px rgba(255, 210, 63, 0.4);
+    background: #404040;
   }
 
+  /* Keep default icon visible on mobile, don't show hover icon */
   .theme-toggle-button:focus .theme-toggle-icon-default,
   .theme-toggle-button:active .theme-toggle-icon-default {
-    opacity: 0;
-    transition: opacity 0.1s steps(1, end);
+    opacity: 1;
   }
 
   .theme-toggle-button:focus .theme-toggle-icon-hover,
   .theme-toggle-button:active .theme-toggle-icon-hover {
-    opacity: 1;
-    transition: opacity 0.1s steps(1, end);
+    opacity: 0;
   }
 }
 
@@ -331,27 +293,68 @@ a, .rainbow-hover {
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
   filter: contrast(1.2);
+  width: 9px;
+  height: 9px;
+  display: block;
 }
 
 /* Mobile-friendly touch targets */
 @media (max-width: 767px) {
   .theme-toggle-button {
-    min-width: 44px;
-    min-height: 44px;
-    padding: 8px;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
   
   .theme-toggle-icon-default,
   .theme-toggle-icon-hover {
-    width: 12px;
-    height: 12px;
+    width: 11px;
+    height: 11px;
   }
   
-  /* Ensure links are easily tappable on mobile */
-  .rainbow-hover {
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
+  /* Ensure only default icon shows on mobile, never hover icon */
+  .theme-toggle-button .theme-toggle-icon-default {
+    opacity: 1 !important;
+  }
+  
+  .theme-toggle-button .theme-toggle-icon-hover {
+    opacity: 0 !important;
+    display: none;
+  }
+  
+}
+
+/* Home page navigation links - minimal spacing on mobile only */
+@media (max-width: 767px) {
+  .home-nav-links {
+    gap: 0 !important;
+    row-gap: 0 !important;
+  }
+
+  .home-nav-links > div {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    line-height: 1 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .home-nav-links > div + div {
+    margin-top: 0 !important;
+  }
+}
+
+/* Desktop: restore original spacing */
+@media (min-width: 768px) {
+  .home-nav-links > div + div {
+    margin-top: 1rem !important; /* 16px - original desktop spacing */
   }
 }
 

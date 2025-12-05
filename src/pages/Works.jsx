@@ -28,12 +28,12 @@ const Works = () => {
 
         {!loading && !error && (
           <>
-            <div className="space-y-4">
+            <div className="space-y-2 md:space-y-4">
               {sortedWorks.map((work) => (
                 <div key={work.id} className="text-[16px] md:text-[16pt]">
                   <Link
                     to={`/works/${work.slug}`}
-                    className="rainbow-hover flex items-center text-black dark:text-white"
+                    className="flex items-center text-black dark:text-white"
                   >
                     {work.title}
                   </Link>
@@ -47,7 +47,7 @@ const Works = () => {
 
             <div className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white mt-16">
               <span className="mr-2">←</span>
-              <Link to="/" className="rainbow-hover">Back</Link>
+              <Link to="/">Back</Link>
             </div>
           </>
         )}

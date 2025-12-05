@@ -81,15 +81,12 @@ export function useHoverSounds() {
       const isButton = target.tagName === 'BUTTON';
       const hasLinkParent = target.closest && typeof target.closest === 'function' && target.closest('a');
       const hasButtonParent = target.closest && typeof target.closest === 'function' && target.closest('button');
-      const hasHoverClass = target.classList && (
-        target.classList.contains('rainbow-hover')
-      );
       
       // Exclude drum machine buttons from hover sounds
       const isDrumMachineButton = target.classList && target.classList.contains('drum-machine-button');
       const hasDrumMachineParent = target.closest && typeof target.closest === 'function' && target.closest('.drum-machine-button');
       
-      if ((isLink || isButton || hasLinkParent || hasButtonParent || hasHoverClass) && !isDrumMachineButton && !hasDrumMachineParent) {
+      if ((isLink || isButton || hasLinkParent || hasButtonParent) && !isDrumMachineButton && !hasDrumMachineParent) {
         soundManager.playPop();
         lastPlayTime = now;
       }

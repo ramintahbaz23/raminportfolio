@@ -107,7 +107,7 @@ const DrumMachine = () => {
   ];
 
   return (
-    <div className="flex flex-wrap justify-between md:justify-start gap-2 w-full md:max-w-fit">
+    <div className="grid grid-cols-3 md:grid-cols-3 gap-4 w-full md:max-w-fit">
       {keys.map(({ key, icon }) => (
         <button
           key={key}
@@ -117,7 +117,7 @@ const DrumMachine = () => {
           }}
           className={`
             drum-machine-button
-            w-20 md:w-28 h-20 md:h-28 flex flex-col items-center justify-center
+            w-full aspect-square flex flex-col items-center justify-center
             bg-[#1c1f26] text-white dark:bg-[#2a2f3a] dark:text-white
             rounded-lg relative
             transition-all duration-150

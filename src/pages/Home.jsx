@@ -28,6 +28,36 @@ const Home = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={`${typeof window !== 'undefined' ? window.location.origin : ''}/og-image.jpg`} />
+        <style>{`
+          @media (max-width: 767px) {
+            .home-nav-links-mobile {
+              gap: 0 !important;
+              row-gap: 0 !important;
+            }
+            .home-nav-links-mobile > div {
+              margin-bottom: 0 !important;
+              padding-top: 0 !important;
+              padding-bottom: 0 !important;
+              line-height: 1.2 !important;
+              height: auto !important;
+              min-height: 0 !important;
+            }
+            .home-nav-links-mobile > div:not(:first-child) {
+              margin-top: 0.5rem !important;
+            }
+            .home-nav-links-mobile > div {
+              display: flex !important;
+              align-items: center !important;
+              height: auto !important;
+              min-height: 0 !important;
+            }
+          }
+          @media (min-width: 768px) {
+            .home-nav-links-mobile > div:not(:first-child) {
+              margin-top: 1rem !important;
+            }
+          }
+        `}</style>
       </Helmet>
 
       <PageLayout>
@@ -51,7 +81,7 @@ const Home = () => {
           </div>
 
           <nav className="mb-16">
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col home-nav-links-mobile">
               {homeData?.Menu?.filter((menuItem) => {
                 const link = String(menuItem.Link || '').toLowerCase();
                 const name = String(menuItem.Name || '').toLowerCase();
@@ -63,8 +93,7 @@ const Home = () => {
                 >
                   <span className="mr-2">→</span>
                   <Link 
-                    to={`/${menuItem.Link}`} 
-                    className="rainbow-hover"
+                    to={`/${menuItem.Link}`}
                   >
                     {menuItem.Name?.replace(/[\[\]]/g, '').trim()}
                   </Link>

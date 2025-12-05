@@ -71,7 +71,7 @@ const Awards = () => {
 
         <div className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white mt-16">
           <span className="mr-2">←</span>
-          <Link to="/about" className="rainbow-hover">Back</Link>
+          <Link to="/about">Back</Link>
         </div>
       </PageLayout>
     </>
