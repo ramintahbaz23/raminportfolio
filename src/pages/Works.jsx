@@ -33,7 +33,7 @@ const Works = () => {
                 <div key={work.id} className="text-[16px] md:text-[16pt]">
                   <Link
                     to={`/works/${work.slug}`}
-                    className="hover:text-[#6366f1] flex items-center text-black dark:text-white"
+                    className="rainbow-hover flex items-center text-black dark:text-white"
                   >
                     {work.title}
                   </Link>
@@ -47,7 +47,7 @@ const Works = () => {
 
             <div className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white mt-16">
               <span className="mr-2">←</span>
-              <Link to="/" className="hover:text-[#6366f1]">Back</Link>
+              <Link to="/" className="rainbow-hover">Back</Link>
             </div>
           </>
         )}

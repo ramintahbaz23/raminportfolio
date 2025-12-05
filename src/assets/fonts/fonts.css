@@ -1,5 +1,13 @@
 @font-face {
   font-display: block;
+  font-family: "Chicago";
+  src: url("./Chicagoflf-2OEe.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-display: block;
   font-family: "Soehne Buch";
   src: url("./soehne-buch.woff2") format("woff2-variations");
   font-style: normal;

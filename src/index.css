@@ -19,11 +19,10 @@
   
   body {
     @apply bg-[#ffffff] text-gray-900;
-    font-family: "Soehne Buch", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-variation-settings: 'slnt' 0, 'MONO' 0.5;
-    font-size: 16pt;
+    font-family: "Chicago", "ChicagoFLF", "Chicago Std", "ChicagoFLF Regular", "Apple Chancery", "Marker Felt", "Comic Sans MS", Arial, sans-serif;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: auto;
+    font-size: 16px;
     line-height: 1.5;
     min-height: var(--viewport-height);
   }
@@ -60,4 +59,681 @@
     body{
         font-size: 16px;
     }
+}
+
+/* Rhythm page specific font size */
+body.rhythm-page {
+  font-size: 14px !important;
+}
+
+@media screen and (max-width: 767px){
+    body.rhythm-page {
+        font-size: 14px !important;
+    }
+}
+
+/* Ensure body is 16px by default (override any other rules) */
+body:not(.rhythm-page) {
+  font-size: 16px !important;
+}
+
+@media screen and (max-width: 767px){
+    body:not(.rhythm-page) {
+        font-size: 16px !important;
+    }
+}
+
+/* Classic Web 1.0 Link Hover Effects */
+.rainbow-hover {
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.1s steps(1, end);
+}
+
+.rainbow-hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.2s ease-out;
+}
+
+.rainbow-hover:hover {
+  transform: translateY(-1px);
+}
+
+.rainbow-hover:hover::after {
+  width: 100%;
+}
+
+/* Mobile/touch device styles for links */
+@media (hover: none) and (pointer: coarse) {
+  .rainbow-hover:active,
+  .rainbow-hover:focus {
+    transform: translateY(-1px);
+  }
+
+  .rainbow-hover:active::after,
+  .rainbow-hover:focus::after {
+    width: 100%;
+  }
+}
+
+/* Mac OS hand cursor for links */
+a, .rainbow-hover, button, [role="button"] {
+  cursor: pointer;
+}
+
+/* Pixel snap animations for buttons and interactive elements */
+button, .drum-button, [role="button"] {
+  transition: transform 0.1s steps(1, end), opacity 0.1s steps(1, end);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+button:hover, .drum-button:hover, [role="button"]:hover {
+  transform: translateY(-1px);
+}
+
+button:active, .drum-button:active, [role="button"]:active {
+  transform: translateY(0px);
+  opacity: 0.8;
+}
+
+/* Pixel snap for links */
+a, .rainbow-hover {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+
+/* Web 1.0 Theme Toggle Button - Circular with 3D bevel */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.theme-toggle-button {
+  border: 2px solid #000;
+  border-style: outset;
+  box-shadow: 
+    inset -1px -1px 0px #000,
+    inset 1px 1px 0px #fff,
+    2px 2px 0px #000;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  transition: all 0.1s steps(1, end);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle-button:hover {
+  border-style: inset;
+  box-shadow: 
+    inset 1px 1px 0px #000,
+    inset -1px -1px 0px #fff;
+  transform: translate(1px, 1px);
+}
+
+/* Only apply focus styles on mobile/touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .theme-toggle-button:focus,
+  .theme-toggle-button:active {
+    border-style: inset;
+    box-shadow: 
+      inset 1px 1px 0px #000,
+      inset -1px -1px 0px #fff;
+    transform: translate(1px, 1px);
+  }
+}
+
+.theme-toggle-button:active {
+  border-style: inset;
+  box-shadow: 
+    inset 2px 2px 0px #000,
+    inset -1px -1px 0px #666;
+  transform: translate(2px, 2px);
+}
+
+.theme-toggle-light {
+  background: #c0c0c0;
+  border-color: #808080;
+}
+
+.theme-toggle-light:hover {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+.theme-toggle-light:hover .theme-toggle-icon-hover {
+  filter: brightness(0) invert(1);
+}
+
+.theme-toggle-light:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent),
+    radial-gradient(2px 2px at 90% 40%, white, transparent),
+    radial-gradient(1px 1px at 33% 60%, white, transparent),
+    radial-gradient(1px 1px at 10% 80%, white, transparent);
+  background-size: 200% 200%;
+  animation: twinkle 3s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+/* Mobile/touch device styles */
+@media (hover: none) and (pointer: coarse) {
+  .theme-toggle-light:focus,
+  .theme-toggle-light:active {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  }
+
+  .theme-toggle-light:focus .theme-toggle-icon-hover,
+  .theme-toggle-light:active .theme-toggle-icon-hover {
+    filter: brightness(0) invert(1);
+  }
+
+  .theme-toggle-light:focus::before,
+  .theme-toggle-light:active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(2px 2px at 20% 30%, white, transparent),
+      radial-gradient(2px 2px at 60% 70%, white, transparent),
+      radial-gradient(1px 1px at 50% 50%, white, transparent),
+      radial-gradient(1px 1px at 80% 10%, white, transparent),
+      radial-gradient(2px 2px at 90% 40%, white, transparent),
+      radial-gradient(1px 1px at 33% 60%, white, transparent),
+      radial-gradient(1px 1px at 10% 80%, white, transparent);
+    background-size: 200% 200%;
+    animation: twinkle 3s ease-in-out infinite;
+    pointer-events: none;
+    border-radius: 50%;
+  }
+}
+
+.theme-toggle-dark {
+  background: #404040;
+  border-color: #202020;
+}
+
+.theme-toggle-dark:hover {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ffd23f 50%, #f7931e 75%, #ff6b35 100%);
+  background-size: 200% 200%;
+  animation: rainbow 2s ease infinite;
+  box-shadow: 
+    inset 1px 1px 0px #000,
+    inset -1px -1px 0px #fff,
+    0 0 20px rgba(255, 107, 53, 0.6), 
+    0 0 40px rgba(255, 210, 63, 0.4);
+}
+
+.theme-toggle-button:hover .theme-toggle-icon-default {
+  opacity: 0;
+  transition: opacity 0.1s steps(1, end);
+}
+
+.theme-toggle-button:hover .theme-toggle-icon-hover {
+  opacity: 1;
+  transition: opacity 0.1s steps(1, end);
+}
+
+/* Mobile/touch device styles */
+@media (hover: none) and (pointer: coarse) {
+  .theme-toggle-dark:focus,
+  .theme-toggle-dark:active {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ffd23f 50%, #f7931e 75%, #ff6b35 100%);
+    background-size: 200% 200%;
+    animation: rainbow 2s ease infinite;
+    box-shadow: 
+      inset 1px 1px 0px #000,
+      inset -1px -1px 0px #fff,
+      0 0 20px rgba(255, 107, 53, 0.6), 
+      0 0 40px rgba(255, 210, 63, 0.4);
+  }
+
+  .theme-toggle-button:focus .theme-toggle-icon-default,
+  .theme-toggle-button:active .theme-toggle-icon-default {
+    opacity: 0;
+    transition: opacity 0.1s steps(1, end);
+  }
+
+  .theme-toggle-button:focus .theme-toggle-icon-hover,
+  .theme-toggle-button:active .theme-toggle-icon-hover {
+    opacity: 1;
+    transition: opacity 0.1s steps(1, end);
+  }
+}
+
+.theme-toggle-icon-default,
+.theme-toggle-icon-hover {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  filter: contrast(1.2);
+}
+
+/* Mobile-friendly touch targets */
+@media (max-width: 767px) {
+  .theme-toggle-button {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px;
+  }
+  
+  .theme-toggle-icon-default,
+  .theme-toggle-icon-hover {
+    width: 12px;
+    height: 12px;
+  }
+  
+  /* Ensure links are easily tappable on mobile */
+  .rainbow-hover {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* CRT Scan Line Overlay */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.crt-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 255, 0, 0.1);
+  animation: scanline 8s linear infinite;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.crt-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+}
+
+/* Typewriter Effect for Headings */
+@keyframes blink-cursor {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid;
+  white-space: nowrap;
+  display: inline-block;
+  letter-spacing: 0.05em;
+  animation: blink-cursor 0.75s step-end infinite;
+}
+
+.typewriter-complete {
+  border-right: none;
+  animation: none;
+}
+
+/* Apply Chicago font to headings and all text */
+h1, h2, h3, h4, h5, h6,
+p, span, div, a, li, ul, ol,
+button, input, textarea, select {
+  font-family: "Chicago", "ChicagoFLF", "Chicago Std", "ChicagoFLF Regular", "Apple Chancery", "Marker Felt", "Comic Sans MS", Arial, sans-serif;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: auto;
+}
+
+/* Override prose font to match web 1.0 style */
+.prose {
+  font-family: "Chicago", "ChicagoFLF", "Chicago Std", "ChicagoFLF Regular", "Apple Chancery", "Marker Felt", "Comic Sans MS", Arial, sans-serif !important;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: auto;
+  font-size: 16pt !important;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6,
+.prose p, .prose span, .prose div, .prose a {
+  font-family: "Chicago", "ChicagoFLF", "Chicago Std", "ChicagoFLF Regular", "Apple Chancery", "Marker Felt", "Comic Sans MS", Arial, sans-serif !important;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: auto;
+  font-size: 16pt !important;
+}
+
+@media screen and (max-width: 767px){
+  .prose {
+    font-size: 16px !important;
+  }
+  
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6,
+  .prose p, .prose span, .prose div, .prose a {
+    font-size: 16px !important;
+  }
+}
+
+/* 1999-2002 Style Dithering Effects */
+
+/* 1-bit dithering (black and white checkerboard) */
+.dither-1bit {
+  position: relative;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.dither-1bit::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.1) 2px,
+      rgba(0, 0, 0, 0.1) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.1) 2px,
+      rgba(0, 0, 0, 0.1) 4px
+    );
+  background-size: 4px 4px;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* 4-bit ordered dither matrix (Bayer dithering pattern) */
+.dither-4bit {
+  position: relative;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.dither-4bit::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    /* 4x4 Bayer ordered dither matrix */
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px, transparent 1px,
+      rgba(0, 0, 0, 0.06) 1px, rgba(0, 0, 0, 0.06) 2px,
+      transparent 2px, transparent 3px,
+      rgba(0, 0, 0, 0.12) 3px, rgba(0, 0, 0, 0.12) 4px,
+      transparent 4px, transparent 5px,
+      rgba(0, 0, 0, 0.18) 5px, rgba(0, 0, 0, 0.18) 6px,
+      transparent 6px, transparent 7px,
+      rgba(0, 0, 0, 0.24) 7px, rgba(0, 0, 0, 0.24) 8px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px, transparent 1px,
+      rgba(0, 0, 0, 0.06) 1px, rgba(0, 0, 0, 0.06) 2px,
+      transparent 2px, transparent 3px,
+      rgba(0, 0, 0, 0.12) 3px, rgba(0, 0, 0, 0.12) 4px,
+      transparent 4px, transparent 5px,
+      rgba(0, 0, 0, 0.18) 5px, rgba(0, 0, 0, 0.18) 6px,
+      transparent 6px, transparent 7px,
+      rgba(0, 0, 0, 0.24) 7px, rgba(0, 0, 0, 0.24) 8px
+    );
+  background-size: 8px 8px;
+  mix-blend-mode: multiply;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Halftone dot pattern (4-bit style) */
+.dither-halftone {
+  position: relative;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.dither-halftone::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 0
+  );
+  background-size: 4px 4px;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Blended dithering for images - apply to img tags */
+img.dither-1bit,
+img.dither-4bit,
+img.dither-halftone {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Background dithering for divs */
+.dither-bg-1bit {
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.1) 0px,
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  background-size: 4px 4px;
+}
+
+.dither-bg-4bit {
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.05) 0px,
+      rgba(0, 0, 0, 0.05) 1px,
+      transparent 1px,
+      transparent 2px,
+      rgba(0, 0, 0, 0.1) 2px,
+      rgba(0, 0, 0, 0.1) 3px,
+      transparent 3px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.05) 0px,
+      rgba(0, 0, 0, 0.05) 1px,
+      transparent 1px,
+      transparent 2px,
+      rgba(0, 0, 0, 0.1) 2px,
+      rgba(0, 0, 0, 0.1) 3px,
+      transparent 3px,
+      transparent 4px
+    );
+  background-size: 8px 8px;
+}
+
+/* Classic Mac OS Web 1.0 Scrollbars - Platinum Gray with 3D Bevel */
+/* WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #C0C0C0;
+  border: 1px solid #808080;
+  border-style: inset;
+  box-shadow: 
+    inset 1px 1px 0px #000,
+    inset -1px -1px 0px #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C0C0C0;
+  border: 1px solid #808080;
+  border-style: outset;
+  box-shadow: 
+    inset -1px -1px 0px #000,
+    inset 1px 1px 0px #fff,
+    1px 1px 0px #000;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B0B0B0;
+  border-style: inset;
+  box-shadow: 
+    inset 1px 1px 0px #000,
+    inset -1px -1px 0px #fff;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #A0A0A0;
+  border-style: inset;
+  box-shadow: 
+    inset 2px 2px 0px #000,
+    inset -1px -1px 0px #666;
+}
+
+::-webkit-scrollbar-button {
+  background: #C0C0C0;
+  border: 1px solid #808080;
+  border-style: outset;
+  box-shadow: 
+    inset -1px -1px 0px #000,
+    inset 1px 1px 0px #fff,
+    1px 1px 0px #000;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+::-webkit-scrollbar-button:hover {
+  background: #B0B0B0;
+  border-style: inset;
+  box-shadow: 
+    inset 1px 1px 0px #000,
+    inset -1px -1px 0px #fff;
+}
+
+::-webkit-scrollbar-button:active {
+  background: #A0A0A0;
+  border-style: inset;
+  box-shadow: 
+    inset 2px 2px 0px #000,
+    inset -1px -1px 0px #666;
+}
+
+/* Dark mode scrollbar - darker gray */
+.dark ::-webkit-scrollbar-track {
+  background: #404040;
+  border-color: #202020;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #505050;
+  border-color: #303030;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #606060;
+}
+
+.dark ::-webkit-scrollbar-thumb:active {
+  background: #707070;
+}
+
+.dark ::-webkit-scrollbar-button {
+  background: #505050;
+  border-color: #303030;
+}
+
+.dark ::-webkit-scrollbar-button:hover {
+  background: #606060;
+}
+
+.dark ::-webkit-scrollbar-button:active {
+  background: #707070;
+}
+
+/* Firefox - Classic Mac style */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #C0C0C0 #808080;
+}
+
+.dark * {
+  scrollbar-color: #505050 #202020;
 }

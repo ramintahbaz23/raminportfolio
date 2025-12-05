@@ -57,7 +57,7 @@ const Awards = () => {
         <div className="space-y-10">
           {grouped.map(([year, items]) => (
             <section key={year} className="space-y-3">
-              <h2 className="text-xl md:text-2xl font-semibold text-black dark:text-white">
+              <h2 className="text-xl md:text-2xl font-semibold text-black dark:text-white typewriter typewriter-complete">
                 {year}
               </h2>
               <div className="space-y-2">
@@ -71,7 +71,7 @@ const Awards = () => {
 
         <div className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white mt-16">
           <span className="mr-2">←</span>
-          <Link to="/about" className="hover:text-[#6366f1]">Back</Link>
+          <Link to="/about" className="rainbow-hover">Back</Link>
         </div>
       </PageLayout>
     </>

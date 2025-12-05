@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './context/ThemeContext';
+import { useNavigationSounds, useHoverSounds } from './hooks/useSounds';
 import Home from './pages/Home';
 import About from './pages/About';
 import Awards from './pages/Awards';
@@ -46,20 +47,29 @@ queryClient.prefetchQuery({
   queryFn: strapiService.getSettings,
 });
 
+const AppContent = () => {
+  useNavigationSounds();
+  useHoverSounds();
+  
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/awards" element={<Awards />} />
+      <Route path="/works" element={<Works />} />
+      <Route path="/works/:slug" element={<Work />} />
+      <Route path="/rhythm" element={<Rhythm />} />
+    </Routes>
+  );
+};
+
 const App = () => {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider>
           <Suspense fallback={null}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/awards" element={<Awards />} />
-              <Route path="/works" element={<Works />} />
-              <Route path="/works/:slug" element={<Work />} />
-              <Route path="/rhythm" element={<Rhythm />} />
-            </Routes>
+            <AppContent />
           </Suspense>
         </ThemeProvider>
       </QueryClientProvider>

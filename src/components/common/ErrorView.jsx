@@ -7,7 +7,7 @@ const ErrorView = ({ message, onRetry }) => {
       {onRetry && (
         <button
           onClick={onRetry}
-          className="text-[16pt] hover:text-[#6366f1] dark:text-white"
+          className="text-[16pt] rainbow-hover dark:text-white"
         >
           Try again
         </button>

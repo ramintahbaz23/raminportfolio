@@ -61,7 +61,10 @@ const Home = () => {
                   className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white"
                 >
                   <span className="mr-2">→</span>
-                  <Link to={`/${menuItem.Link}`} className="hover:text-[#6366f1]">
+                  <Link 
+                    to={`/${menuItem.Link}`} 
+                    className="rainbow-hover"
+                  >
                     {menuItem.Name?.replace(/[\[\]]/g, '').trim()}
                   </Link>
                 </div>

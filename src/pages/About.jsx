@@ -76,28 +76,42 @@ const About = () => {
             const link = String(menuItem.Link || '').toLowerCase();
             const name = String(menuItem.Name || '').toLowerCase();
             return link !== 'awards' && !name.includes('award');
-          }).map((menuItem) => (
-            <div
-              key={menuItem.id}
-              className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white"
-            >
-              <span className="mr-2">→</span>
-              {/* Keep same rendering pattern as before — external links use full URL */}
-              <Link
-                to={menuItem.Link.startsWith('http') ? menuItem.Link : `/${menuItem.Link}`}
-                target={menuItem.Target}
-                className="hover:text-[#6366f1] flex items-center"
+          }).map((menuItem) => {
+            const isExternal = menuItem.Link.startsWith('http');
+            const linkContent = isExternal ? `${menuItem.Name?.replace(/[\[\]]/g, '').trim()}*` : menuItem.Name?.replace(/[\[\]]/g, '').trim();
+            
+            return (
+              <div
+                key={menuItem.id}
+                className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white"
               >
-                {menuItem.Link.startsWith('http') ? `${menuItem.Name?.replace(/[\[\]]/g, '').trim()}*` : menuItem.Name?.replace(/[\[\]]/g, '').trim()}
-              </Link>
-            </div>
-          ))}
+                <span className="mr-2">→</span>
+                {isExternal ? (
+                  <a
+                    href={menuItem.Link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rainbow-hover flex items-center"
+                  >
+                    {linkContent}
+                  </a>
+                ) : (
+                  <Link
+                    to={`/${menuItem.Link}`}
+                    className="rainbow-hover flex items-center"
+                  >
+                    {linkContent}
+                  </Link>
+                )}
+              </div>
+            );
+          })}
 
           <div className="h-4"></div>
 
           <div className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white">
             <span className="mr-2">←</span>
-            <Link to="/" className="hover:text-[#6366f1]">Back</Link>
+            <Link to="/" className="rainbow-hover">Back</Link>
           </div>
         </div>
       </PageLayout>

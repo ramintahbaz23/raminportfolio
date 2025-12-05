@@ -34,7 +34,7 @@ const Info = () => {
             <Link
               to={menuItem.Link.startsWith('http') ? menuItem.Link : `/${menuItem.Link}`} 
               target={menuItem.Target}
-              className="hover:text-[#6366f1] flex items-center"
+              className="rainbow-hover flex items-center"
             >
               <span className={`mr-2 transform ${menuItem.Link.startsWith('http') ? '-rotate-45' : ''}`}>→</span>
               {menuItem.Name}
@@ -43,7 +43,7 @@ const Info = () => {
         ))}
         <div className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white">
           
-          <Link to="/" className="hover:text-[#6366f1]">
+          <Link to="/" className="rainbow-hover">
             <span className="mr-2">←</span>
             Back
           </Link>

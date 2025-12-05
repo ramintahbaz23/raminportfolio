@@ -151,10 +151,6 @@ export default function Work() {
 
   return (
     <PageLayoutWorkSingle>
-      <div className="fixed top-5 right-5 md:top-10 md:right-10 z-50">
-        <Link to="/works" className="hover:text-[#6366f1] text-black dark:text-white">× Close</Link>
-      </div>
-
       {loading && <p className="text-white/80 px-6">Loading…</p>}
       {error && <p className="text-red-400 px-6">Failed to load media.</p>}
       {!loading && !error && (resolved?.length ?? 0) === 0 && (
@@ -163,7 +159,7 @@ export default function Work() {
 
       <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         <div className="pt-2 pb-4">
-          <h1 className="text-black dark:text-white">{work?.title || 'Ramin Tahbaz'}</h1>
+          <h1 className="text-black dark:text-white typewriter typewriter-complete">{work?.title || 'Ramin Tahbaz'}</h1>
         </div>
 
         {/* Masonry container */}
@@ -219,7 +215,7 @@ export default function Work() {
                     crossOrigin="anonymous"
                     referrerPolicy="no-referrer"
                     alt={work?.title || 'Work media'}
-                    className="block w-full h-auto rounded-xl object-contain align-top"
+                    className="block w-full h-auto rounded-xl object-contain align-top dither-4bit"
                     loading={index < 6 ? 'eager' : 'lazy'}
                     onLoad={() => isoRef.current && isoRef.current.arrange()}
                   />

@@ -116,12 +116,15 @@ const DrumMachine = () => {
             triggerKeyAnimation(key.toLowerCase());
           }}
           className={`
-            w-14 md:w-20 h-14 md:h-20 flex flex-col items-center justify-center
+            drum-machine-button
+            w-20 md:w-28 h-20 md:h-28 flex flex-col items-center justify-center
             bg-[#1c1f26] text-white dark:bg-[#2a2f3a] dark:text-white
             rounded-lg relative
             transition-all duration-150
+            p-2
             ${activeKeys[key.toLowerCase()] ? 'transform scale-95 opacity-75' : ''}
           `}
+          style={{ zIndex: 10, position: 'relative' }}
         >
           {activeKeys[key.toLowerCase()] && (
             <span className="absolute top-2 right-2 w-2 h-2 bg-green-500 rounded-full opacity-80"></span>
@@ -129,7 +132,13 @@ const DrumMachine = () => {
           <img 
             src={icon} 
             alt={`${key} icon`} 
-            className="w-7 md:w-8 h-7 md:h-8 mb-1 object-contain"
+            className="w-10 md:w-12 h-10 md:h-12 mb-1 object-contain"
+            style={{ 
+              filter: 'brightness(0) invert(1)',
+              opacity: 1,
+              maxWidth: '100%',
+              maxHeight: '100%'
+            }}
           />
           <span className="text-[16px] md:text-[16pt] hidden md:block">{key}</span>
         </button>
