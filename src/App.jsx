@@ -10,6 +10,7 @@ import Awards from './pages/Awards';
 import Works from './pages/Works';
 import Work from './pages/Work';
 import Rhythm from './pages/Rhythm';
+import PromisePayUpdate from './pages/PromisePayUpdate';
 import { strapiService } from './services/api';
 
 const queryClient = new QueryClient({
@@ -59,6 +60,7 @@ const AppContent = () => {
       <Route path="/works" element={<Works />} />
       <Route path="/works/:slug" element={<Work />} />
       <Route path="/rhythm" element={<Rhythm />} />
+      <Route path="/promisepay-update" element={<PromisePayUpdate />} />
     </Routes>
   );
 };
