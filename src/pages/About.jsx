@@ -93,6 +93,8 @@ const About = () => {
             </div>
           ))}
 
+          <div className="h-4"></div>
+
           <div className="flex items-center text-[16px] md:text-[16pt] text-black dark:text-white">
             <span className="mr-2">←</span>
             <Link to="/" className="hover:text-[#6366f1]">Back</Link>

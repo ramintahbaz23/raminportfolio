@@ -21,6 +21,11 @@ const Rhythm = () => {
             </Helmet>
             <PageLayout>
                 <div className="flex flex-col">
+                    <div className="mb-8">
+                        <p className="text-[16px] md:text-[16pt] text-black dark:text-white max-w-xl italic">
+                            It's not about the notes you play, it's about the grooves you lay.
+                        </p>
+                    </div>
                     <div className="mb-8 text-[16px] md:text-[16pt] text-black dark:text-white">
                         {homeData?.DrumContent}
                     </div>
