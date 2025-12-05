@@ -27,7 +27,7 @@ const Home = () => {
           content={homeData?.SEO?.SEO_Description || "Welcome to Ramin's portfolio"}
         />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={`${typeof window !== 'undefined' ? window.location.origin : ''}/favicon.jpeg`} />
+        <meta property="og:image" content={`${typeof window !== 'undefined' ? window.location.origin : ''}/og-image.jpg`} />
       </Helmet>
 
       <PageLayout>
