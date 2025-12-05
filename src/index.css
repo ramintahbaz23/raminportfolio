@@ -112,6 +112,49 @@ a {
   image-rendering: crisp-edges;
 }
 
+/* Vintage Web 1.0 Mac underline hover effect - desktop only */
+@media (hover: hover) and (pointer: fine) {
+  a {
+    position: relative;
+    text-decoration: none;
+    transition: transform 0.1s steps(1, end);
+  }
+
+  a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.15s steps(4, end);
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  a:hover {
+    transform: translateY(-1px);
+  }
+
+  a:hover::after {
+    width: 100%;
+  }
+  
+  /* For flex links, use text-decoration with vintage styling */
+  a.flex::after {
+    display: none;
+  }
+  
+  a.flex:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+    text-decoration-color: currentColor;
+  }
+}
+
 
 /* Web 1.0 Theme Toggle Button - Circular with 3D bevel */
 @keyframes twinkle {

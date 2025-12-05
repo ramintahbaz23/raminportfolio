@@ -84,7 +84,7 @@ const Navbar = () => {
             <div className="w-full max-w-[1400px] px-6 sm:px-8 lg:px-12">
               <Link 
                 to="/" 
-                className="text-[16px] md:text-[16pt] dark:text-white text-black relative z-40 inline-block"
+                className="text-[16px] md:text-[16pt] dark:text-white text-black relative z-40 inline-block py-1.5"
                 style={{ pointerEvents: 'auto', position: 'relative' }}
               >
                 Ramin Tahbaz
