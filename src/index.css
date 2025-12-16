@@ -19,9 +19,9 @@
   
   body {
     @apply bg-[#ffffff] text-gray-900;
-    font-family: "Chicago", "ChicagoFLF", "Chicago Std", "ChicagoFLF Regular", "Apple Chancery", "Marker Felt", "Comic Sans MS", Arial, sans-serif;
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: auto;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
     line-height: 1.5;
     min-height: var(--viewport-height);
@@ -401,8 +401,8 @@ a {
   }
 }
 
-/* CRT Scan Line Overlay */
-@keyframes scanline {
+/* CRT Scan Line Overlay - DISABLED */
+/* @keyframes scanline {
   0% {
     transform: translateY(-100%);
   }
@@ -449,7 +449,7 @@ a {
     transparent 2px
   );
   pointer-events: none;
-}
+} */
 
 /* Typewriter Effect for Headings */
 @keyframes blink-cursor {
@@ -475,28 +475,28 @@ a {
   animation: none;
 }
 
-/* Apply Chicago font to headings and all text */
+/* Apply system fonts to all text */
 h1, h2, h3, h4, h5, h6,
 p, span, div, a, li, ul, ol,
 button, input, textarea, select {
-  font-family: "Chicago", "ChicagoFLF", "Chicago Std", "ChicagoFLF Regular", "Apple Chancery", "Marker Felt", "Comic Sans MS", Arial, sans-serif;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: auto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Override prose font to match web 1.0 style */
+/* Prose styling */
 .prose {
-  font-family: "Chicago", "ChicagoFLF", "Chicago Std", "ChicagoFLF Regular", "Apple Chancery", "Marker Felt", "Comic Sans MS", Arial, sans-serif !important;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: auto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-size: 16pt !important;
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6,
 .prose p, .prose span, .prose div, .prose a {
-  font-family: "Chicago", "ChicagoFLF", "Chicago Std", "ChicagoFLF Regular", "Apple Chancery", "Marker Felt", "Comic Sans MS", Arial, sans-serif !important;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: auto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-size: 16pt !important;
 }
 
@@ -533,18 +533,19 @@ button, input, textarea, select {
       0deg,
       transparent,
       transparent 2px,
-      rgba(0, 0, 0, 0.1) 2px,
-      rgba(0, 0, 0, 0.1) 4px
+      rgba(0, 0, 0, 0.2) 2px,
+      rgba(0, 0, 0, 0.2) 4px
     ),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 2px,
-      rgba(0, 0, 0, 0.1) 2px,
-      rgba(0, 0, 0, 0.1) 4px
+      rgba(0, 0, 0, 0.2) 2px,
+      rgba(0, 0, 0, 0.2) 4px
     );
   background-size: 4px 4px;
   mix-blend-mode: overlay;
+  opacity: 0.8;
   pointer-events: none;
 }
 
@@ -568,28 +569,28 @@ button, input, textarea, select {
     repeating-linear-gradient(
       0deg,
       transparent 0px, transparent 1px,
-      rgba(0, 0, 0, 0.06) 1px, rgba(0, 0, 0, 0.06) 2px,
+      rgba(0, 0, 0, 0.15) 1px, rgba(0, 0, 0, 0.15) 2px,
       transparent 2px, transparent 3px,
-      rgba(0, 0, 0, 0.12) 3px, rgba(0, 0, 0, 0.12) 4px,
+      rgba(0, 0, 0, 0.25) 3px, rgba(0, 0, 0, 0.25) 4px,
       transparent 4px, transparent 5px,
-      rgba(0, 0, 0, 0.18) 5px, rgba(0, 0, 0, 0.18) 6px,
+      rgba(0, 0, 0, 0.35) 5px, rgba(0, 0, 0, 0.35) 6px,
       transparent 6px, transparent 7px,
-      rgba(0, 0, 0, 0.24) 7px, rgba(0, 0, 0, 0.24) 8px
+      rgba(0, 0, 0, 0.45) 7px, rgba(0, 0, 0, 0.45) 8px
     ),
     repeating-linear-gradient(
       90deg,
       transparent 0px, transparent 1px,
-      rgba(0, 0, 0, 0.06) 1px, rgba(0, 0, 0, 0.06) 2px,
+      rgba(0, 0, 0, 0.15) 1px, rgba(0, 0, 0, 0.15) 2px,
       transparent 2px, transparent 3px,
-      rgba(0, 0, 0, 0.12) 3px, rgba(0, 0, 0, 0.12) 4px,
+      rgba(0, 0, 0, 0.25) 3px, rgba(0, 0, 0, 0.25) 4px,
       transparent 4px, transparent 5px,
-      rgba(0, 0, 0, 0.18) 5px, rgba(0, 0, 0, 0.18) 6px,
+      rgba(0, 0, 0, 0.35) 5px, rgba(0, 0, 0, 0.35) 6px,
       transparent 6px, transparent 7px,
-      rgba(0, 0, 0, 0.24) 7px, rgba(0, 0, 0, 0.24) 8px
+      rgba(0, 0, 0, 0.45) 7px, rgba(0, 0, 0, 0.45) 8px
     );
   background-size: 8px 8px;
   mix-blend-mode: multiply;
-  opacity: 0.4;
+  opacity: 0.7;
   pointer-events: none;
 }
 
@@ -610,12 +611,12 @@ button, input, textarea, select {
   height: 100%;
   background-image: radial-gradient(
     circle at 1px 1px,
-    rgba(0, 0, 0, 0.15) 1px,
+    rgba(0, 0, 0, 0.25) 1px,
     transparent 0
   );
   background-size: 4px 4px;
   mix-blend-mode: multiply;
-  opacity: 0.5;
+  opacity: 0.7;
   pointer-events: none;
 }
 
@@ -633,8 +634,8 @@ img.dither-halftone {
   background-image: 
     repeating-linear-gradient(
       45deg,
-      rgba(0, 0, 0, 0.1) 0px,
-      rgba(0, 0, 0, 0.1) 1px,
+      rgba(0, 0, 0, 0.2) 0px,
+      rgba(0, 0, 0, 0.2) 1px,
       transparent 1px,
       transparent 2px
     );
@@ -645,23 +646,23 @@ img.dither-halftone {
   background-image: 
     repeating-linear-gradient(
       0deg,
-      rgba(0, 0, 0, 0.05) 0px,
-      rgba(0, 0, 0, 0.05) 1px,
+      rgba(0, 0, 0, 0.12) 0px,
+      rgba(0, 0, 0, 0.12) 1px,
       transparent 1px,
       transparent 2px,
-      rgba(0, 0, 0, 0.1) 2px,
-      rgba(0, 0, 0, 0.1) 3px,
+      rgba(0, 0, 0, 0.2) 2px,
+      rgba(0, 0, 0, 0.2) 3px,
       transparent 3px,
       transparent 4px
     ),
     repeating-linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.05) 0px,
-      rgba(0, 0, 0, 0.05) 1px,
+      rgba(0, 0, 0, 0.12) 0px,
+      rgba(0, 0, 0, 0.12) 1px,
       transparent 1px,
       transparent 2px,
-      rgba(0, 0, 0, 0.1) 2px,
-      rgba(0, 0, 0, 0.1) 3px,
+      rgba(0, 0, 0, 0.2) 2px,
+      rgba(0, 0, 0, 0.2) 3px,
       transparent 3px,
       transparent 4px
     );
@@ -783,3 +784,491 @@ img.dither-halftone {
 .dark * {
   scrollbar-color: #505050 #202020;
 }
+
+/* ============================================
+   VINTAGE APPLE MAC OS STYLING
+   ============================================ */
+
+/* Classic Mac OS Window Styling */
+.mac-window {
+  background: var(--mac-window-bg);
+  border: 2px solid var(--mac-window-border);
+  border-style: outset;
+  box-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 0.3),
+    inset 1px 1px 0px var(--mac-white),
+    inset -1px -1px 0px var(--mac-platinum-dark);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Classic Mac OS Title Bar */
+.mac-title-bar {
+  background: linear-gradient(
+    to bottom,
+    var(--mac-platinum) 0%,
+    var(--mac-platinum-dark) 100%
+  );
+  border-bottom: 1px solid var(--mac-black);
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--mac-black);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  box-shadow: inset 0 1px 0 var(--mac-white);
+}
+
+/* Classic Mac OS Window Controls (Close, Minimize, Zoom) */
+.mac-window-control {
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--mac-black);
+  border-style: outset;
+  box-shadow: 
+    inset -1px -1px 0px var(--mac-platinum-dark),
+    inset 1px 1px 0px var(--mac-white);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  cursor: pointer;
+  transition: all 0.1s steps(1, end);
+}
+
+.mac-window-control:hover {
+  border-style: inset;
+  box-shadow: 
+    inset 1px 1px 0px var(--mac-black),
+    inset -1px -1px 0px var(--mac-white);
+}
+
+.mac-window-control.close {
+  background: #FF6B6B;
+}
+
+.mac-window-control.minimize {
+  background: #FFD93D;
+}
+
+.mac-window-control.zoom {
+  background: #6BCF7F;
+}
+
+/* Classic Mac OS Button Styling */
+.mac-button {
+  background: var(--mac-platinum);
+  border: 2px solid var(--mac-window-border);
+  border-style: outset;
+  box-shadow: 
+    inset -1px -1px 0px var(--mac-black),
+    inset 1px 1px 0px var(--mac-white),
+    1px 1px 0px var(--mac-black);
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--mac-black);
+  cursor: pointer;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  transition: all 0.1s steps(1, end);
+  text-align: center;
+  min-width: 60px;
+}
+
+.mac-button:hover {
+  background: var(--mac-platinum-light);
+}
+
+.mac-button:active {
+  border-style: inset;
+  box-shadow: 
+    inset 1px 1px 0px var(--mac-black),
+    inset -1px -1px 0px var(--mac-white);
+  transform: translate(1px, 1px);
+}
+
+.mac-button:disabled {
+  background: var(--mac-platinum-dark);
+  color: var(--mac-platinum-darker);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Classic Mac OS Default Button (highlighted) */
+.mac-button-default {
+  background: var(--mac-platinum);
+  border: 2px solid var(--mac-black);
+  box-shadow: 
+    inset -1px -1px 0px var(--mac-black),
+    inset 1px 1px 0px var(--mac-white),
+    2px 2px 0px var(--mac-black);
+}
+
+/* Classic Mac OS Text Input */
+.mac-input {
+  background: var(--mac-white);
+  border: 2px solid var(--mac-window-border);
+  border-style: inset;
+  box-shadow: 
+    inset 1px 1px 0px var(--mac-black),
+    inset -1px -1px 0px var(--mac-white);
+  padding: 4px 6px;
+  font-size: 12px;
+  color: var(--mac-black);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.mac-input:focus {
+  outline: 2px solid var(--mac-black);
+  outline-offset: -2px;
+}
+
+/* Classic Mac OS Menu Bar */
+.mac-menu-bar {
+  background: var(--mac-platinum);
+  border-bottom: 1px solid var(--mac-black);
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--mac-black);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  box-shadow: inset 0 1px 0 var(--mac-white);
+}
+
+.mac-menu-item {
+  padding: 2px 8px;
+  cursor: pointer;
+  border-radius: 0;
+  transition: all 0.1s steps(1, end);
+}
+
+.mac-menu-item:hover {
+  background: var(--mac-black);
+  color: var(--mac-white);
+}
+
+/* Classic Mac OS Pattern Background */
+.mac-pattern-bg {
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+  background-size: 4px 4px;
+  background-color: var(--mac-window-bg);
+}
+
+/* Classic Mac OS Divider Line */
+.mac-divider {
+  height: 2px;
+  background: var(--mac-platinum-dark);
+  border-top: 1px solid var(--mac-white);
+  border-bottom: 1px solid var(--mac-black);
+  margin: 8px 0;
+}
+
+/* Classic Mac OS Checkbox */
+.mac-checkbox {
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--mac-black);
+  border-style: inset;
+  background: var(--mac-white);
+  box-shadow: 
+    inset 1px 1px 0px var(--mac-black),
+    inset -1px -1px 0px var(--mac-white);
+  cursor: pointer;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: all 0.1s steps(1, end);
+}
+
+.mac-checkbox:checked {
+  background: var(--mac-black);
+  box-shadow: 
+    inset -1px -1px 0px var(--mac-black),
+    inset 1px 1px 0px var(--mac-white);
+}
+
+.mac-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: -2px;
+  left: 1px;
+  color: var(--mac-white);
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* Classic Mac OS Radio Button */
+.mac-radio {
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--mac-black);
+  border-style: inset;
+  background: var(--mac-white);
+  box-shadow: 
+    inset 1px 1px 0px var(--mac-black),
+    inset -1px -1px 0px var(--mac-white);
+  border-radius: 50%;
+  cursor: pointer;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: all 0.1s steps(1, end);
+}
+
+.mac-radio:checked {
+  background: var(--mac-black);
+  box-shadow: 
+    inset -1px -1px 0px var(--mac-black),
+    inset 1px 1px 0px var(--mac-white);
+}
+
+/* Classic Mac OS Select/Dropdown */
+.mac-select {
+  background: var(--mac-white);
+  border: 2px solid var(--mac-window-border);
+  border-style: inset;
+  box-shadow: 
+    inset 1px 1px 0px var(--mac-black),
+    inset -1px -1px 0px var(--mac-white);
+  padding: 4px 20px 4px 6px;
+  font-size: 12px;
+  color: var(--mac-black);
+  cursor: pointer;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: 
+    linear-gradient(45deg, transparent 50%, var(--mac-black) 50%),
+    linear-gradient(135deg, var(--mac-black) 50%, transparent 50%);
+  background-position: 
+    calc(100% - 8px) calc(1em - 2px),
+    calc(100% - 4px) calc(1em - 2px);
+  background-size: 4px 4px, 4px 4px;
+  background-repeat: no-repeat;
+}
+
+/* Classic Mac OS Progress Bar */
+.mac-progress {
+  background: var(--mac-white);
+  border: 2px solid var(--mac-window-border);
+  border-style: inset;
+  box-shadow: 
+    inset 1px 1px 0px var(--mac-black),
+    inset -1px -1px 0px var(--mac-white);
+  height: 16px;
+  position: relative;
+  overflow: hidden;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.mac-progress-bar {
+  background: linear-gradient(
+    to bottom,
+    var(--mac-platinum) 0%,
+    var(--mac-platinum-dark) 100%
+  );
+  height: 100%;
+  border-right: 1px solid var(--mac-black);
+  box-shadow: inset 0 1px 0 var(--mac-white);
+  transition: width 0.2s steps(4, end);
+}
+
+/* Classic Mac OS List Box */
+.mac-list {
+  background: var(--mac-white);
+  border: 2px solid var(--mac-window-border);
+  border-style: inset;
+  box-shadow: 
+    inset 1px 1px 0px var(--mac-black),
+    inset -1px -1px 0px var(--mac-white);
+  padding: 2px;
+  font-size: 12px;
+  color: var(--mac-black);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.mac-list-item {
+  padding: 2px 4px;
+  cursor: pointer;
+  transition: all 0.1s steps(1, end);
+}
+
+.mac-list-item:hover {
+  background: var(--mac-platinum);
+}
+
+.mac-list-item.selected {
+  background: var(--mac-black);
+  color: var(--mac-white);
+}
+
+/* Classic Mac OS Toolbar */
+.mac-toolbar {
+  background: var(--mac-platinum);
+  border-top: 1px solid var(--mac-white);
+  border-bottom: 1px solid var(--mac-black);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.mac-toolbar-button {
+  width: 24px;
+  height: 24px;
+  background: var(--mac-platinum);
+  border: 1px solid var(--mac-window-border);
+  border-style: outset;
+  box-shadow: 
+    inset -1px -1px 0px var(--mac-black),
+    inset 1px 1px 0px var(--mac-white);
+  cursor: pointer;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  transition: all 0.1s steps(1, end);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mac-toolbar-button:hover {
+  background: var(--mac-platinum-light);
+}
+
+.mac-toolbar-button:active {
+  border-style: inset;
+  box-shadow: 
+    inset 1px 1px 0px var(--mac-black),
+    inset -1px -1px 0px var(--mac-white);
+  transform: translate(1px, 1px);
+}
+
+/* Classic Mac OS Window Shadow */
+.mac-window-shadow {
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.4),
+    inset 1px 1px 0px var(--mac-white),
+    inset -1px -1px 0px var(--mac-platinum-dark);
+}
+
+/* Classic Mac OS Alert/Dialog Box */
+.mac-alert {
+  background: var(--mac-window-bg);
+  border: 2px solid var(--mac-window-border);
+  border-style: outset;
+  box-shadow: 
+    6px 6px 12px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 0px var(--mac-white),
+    inset -1px -1px 0px var(--mac-platinum-dark);
+  padding: 16px;
+  min-width: 300px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.mac-alert-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Classic Mac OS Resize Handle */
+.mac-resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      var(--mac-platinum-dark) 2px,
+      var(--mac-platinum-dark) 4px
+    );
+  cursor: nwse-resize;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Apply vintage Mac styling to body in light mode */
+body:not(.dark) {
+  background: var(--mac-window-bg);
+}
+
+/* Dark mode adjustments for vintage Mac styling */
+.dark .mac-window {
+  background: #2a2a2a;
+  border-color: #404040;
+}
+
+.dark .mac-title-bar {
+  background: linear-gradient(
+    to bottom,
+    #404040 0%,
+    #202020 100%
+  );
+  color: var(--mac-white);
+}
+
+.dark .mac-button {
+  background: #505050;
+  border-color: #303030;
+  color: var(--mac-white);
+}
+
+.dark .mac-input {
+  background: #1a1a1a;
+  border-color: #404040;
+  color: var(--mac-white);
+}
+

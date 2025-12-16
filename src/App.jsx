@@ -3,7 +3,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './context/ThemeContext';
-import { useNavigationSounds, useHoverSounds } from './hooks/useSounds';
 import Home from './pages/Home';
 import About from './pages/About';
 import Awards from './pages/Awards';
@@ -49,9 +48,6 @@ queryClient.prefetchQuery({
 });
 
 const AppContent = () => {
-  useNavigationSounds();
-  useHoverSounds();
-  
   return (
     <Routes>
       <Route path="/" element={<Home />} />

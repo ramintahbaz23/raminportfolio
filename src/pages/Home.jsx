@@ -85,7 +85,7 @@ const Home = () => {
               {homeData?.Menu?.filter((menuItem) => {
                 const link = String(menuItem.Link || '').toLowerCase();
                 const name = String(menuItem.Name || '').toLowerCase();
-                return link !== 'awards' && !name.includes('award');
+                return link !== 'awards' && !name.includes('award') && link !== 'works' && link !== 'work' && !name.includes('work');
               }).map((menuItem) => (
                 <div
                   key={menuItem.id}

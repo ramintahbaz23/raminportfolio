@@ -3,11 +3,10 @@ import Navbar from './Navbar';
 
 const Layout = ({ children }) => {
   return (
-    <div className="min-h-screen overflow-hidden bg-white dark:bg-[#1c1f26]">
-      <div className="crt-overlay"></div>
-      <div className="p-10 md:p-20 w-full md:max-w-[570px]">
+    <div className="min-h-screen bg-white dark:bg-[#1c1f26]">
+      <div className="p-10 md:p-20 max-w-4xl">
         <Navbar />
-        <main className="mt-12 text-black dark:text-white">
+        <main className="mt-12 text-black dark:text-white text-left">
           {children}
         </main>
       </div>
